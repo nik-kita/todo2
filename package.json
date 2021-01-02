@@ -1,0 +1,24 @@
+{
+  "name": "todo2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nik-kita/todo2.git"
+  },
+  "author": "Nikita Moiseienko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nik-kita/todo2/issues"
+  },
+  "homepage": "https://github.com/nik-kita/todo2#readme",
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
