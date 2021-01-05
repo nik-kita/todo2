@@ -1,0 +1,8 @@
+<%- contentFor('content') %>
+<form method="POST" action="<% baseUrl %>/register">
+    <input name="email" type="email" placeholder="email">
+    <input name="nik" type="text" placeholder="nik">
+    <input name="password" type="password" placeholder="password">
+    <input type="submit" value="Create Account">
+    <a href="<%= baseUrl %>/login">Already registered!</a>
+</form>
