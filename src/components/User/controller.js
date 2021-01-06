@@ -3,11 +3,15 @@ const UserService = require('./service');
 
 async function userGoals(req, res) {
     const user = await UserService.findByNik(req.params.nik);
-    res.render('userGoals', { user, addGoalButtonUrl: `/user/${user.nik}/goal?${queryString.stringify({ token: user.token })}` });
+    const tokenInQuery = `?${queryString.stringify({ token: user.token })}`;
+    res.render('userGoals', { user, tokenInQuery });
 }
 
 function addGoalView(req, res) {
-    res.render('addGoal', { addGoalUrl: `/user/${req.params.nik}/goal`, token: req.query.token });
+    res.render('addGoal', {
+        addGoalUrl: `/user/${req.params.nik}/goal`,
+        token: req.query.token,
+    });
 }
 
 function addGoal(req, res) {
@@ -19,8 +23,15 @@ function addGoal(req, res) {
     res.redirect(`/user/${req.params.nik}?${queryString.stringify({ token: req.body.token })}`);
 }
 
+async function updateGoalView(req, res) {
+    const goal = (await UserService.findGoalById(req.params.nik, req.params.goalId)).goals[0];
+    console.log(goal);
+    res.render('updateGoal', { goal });
+}
+
 module.exports = {
     userGoals,
     addGoalView,
     addGoal,
+    updateGoalView,
 };

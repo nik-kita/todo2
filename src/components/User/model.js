@@ -1,26 +1,6 @@
 const { Schema } = require('mongoose');
 const connection = require('../../config/connection');
-
-const GoalShema = new Schema(
-    {
-        title: {
-            type: String,
-            default: Date.now,
-        },
-        description: {
-            type: String,
-            default: null,
-        },
-        tasks: {
-            type: [{ type: Schema.Types.ObjectId, ref: 'tasks' }],
-            default: [],
-        },
-    },
-    {
-        collection: 'goals',
-        versionKey: false,
-    },
-);
+const GoalSchema = require('../Goal/model').schema;
 
 const UserSchema = new Schema(
     {
@@ -38,7 +18,7 @@ const UserSchema = new Schema(
             default: null,
         },
         goals: {
-            type: [{ type: GoalShema }],
+            type: [{ type: GoalSchema }],
             default: [],
         },
     },
