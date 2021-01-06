@@ -1,0 +1,6 @@
+<%- contentFor('content') %>
+<form method="POST" action="<%= baseUrl + addGoalUrl %>">
+    <input name="title" type="text" placeholder="Title (default current date)">
+    <input name="description" type="text" placeholder="Description (optionally)">
+    <input type="submit" value="Create">
+</form>

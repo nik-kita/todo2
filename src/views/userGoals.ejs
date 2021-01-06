@@ -1,5 +1,6 @@
 <%- contentFor('content') %>
 <h3><%= user.nik %></h3>
+<button><a href="<%= baseUrl + addGoalButtonUrl %>">Add new goal</a></button>
 <% user.goals.forEach(goal => { %>
     <h4><%= goal.title %></h4>
     <p><%= goal.description || '' %></p>

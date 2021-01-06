@@ -20,7 +20,6 @@ async function login(req, res) {
         user.token = token;
         user.save();
         const qParams = queryString.stringify({ token });
-        console.log(qParams);
         res.redirect(`/user/${user.nik}?${qParams}`);
     } else {
         res.status(404).json({ sms: 'Please check your nik or password' });
