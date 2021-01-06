@@ -2,7 +2,6 @@
 <h3><%= user.nik %></h3>
 <button><a href="<%= `${baseUrl}/user/${user.nik}/goal${tokenInQuery}` %>">Add new goal</a></button>
 <% user.goals.forEach(goal => { %>
-    <h3><%= goal.title %></h3>
-    <a href="<%= `${baseUrl}/user/${user.nik}/goal/${goal._id}${tokenInQuery}` %>">Update</a>
+    <h2><a href="<%= `${baseUrl}/user/${user.nik}/goal/${goal._id}${tokenInQuery}` %>"><%= goal.title %></a></h2>
     <p><%= goal.description || '' %></p>
 <% }) %>
