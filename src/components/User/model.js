@@ -16,6 +16,10 @@ const GoalShema = new Schema(
             default: [],
         },
     },
+    {
+        collection: 'goals',
+        versionKey: false,
+    },
 );
 
 const UserSchema = new Schema(
