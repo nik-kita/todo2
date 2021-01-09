@@ -1,5 +1,10 @@
 <%- contentFor('content') %>
 <h1><%= goal.title %></h1>
+<ul>
+    <% goal.tasks.forEach(task => { %>
+        <li>task.name</li>
+    <% }) %>
+</ul>
 <button>
-    <a href="<%= `${baseUrl}/`>Add task</a>
+    <a href="<%= `${baseUrl + addTaskViewUrl}`>Add task</a>
 </button>

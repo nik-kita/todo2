@@ -1,0 +1,7 @@
+<%- contentFor('content') %>
+
+<form method="POST" action="<%= baseUrl + addTaskUrl %>">
+    <input name="token" type="hidden" value="<%= token %>">
+    <input name="title" type="text" placeholder="Your task">
+    <input type="submit" value="Add">
+</form>

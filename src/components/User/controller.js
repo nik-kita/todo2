@@ -26,7 +26,10 @@ function addGoal(req, res) {
 async function updateGoalView(req, res) {
     const goal = (await UserService.findGoalById(req.params.nik, req.params.goalId)).goals[0];
     console.log(goal);
-    res.render('singleGoal', { goal });
+    res.render('singleGoal', {
+        goal,
+        addTaskViewUrl: `/user/${req.params.nik}/goal/${req.params.goalId}/task?${queryString.stringify({ token: req.body.token })}`,
+    });
 }
 
 module.exports = {
