@@ -1,0 +1,19 @@
+<%- contentFor('content') %>
+    <h1>
+        <%= user.nik %>
+    </h1>
+    <hr>
+    <button>
+        <a href="<%= `${baseUrl}/goal${qstrNikToken}` %>">New Goal</a>
+    </button>
+    <ul>
+
+       <% user.goals.forEach(goal => { %>
+            <li>
+                <a href="<%= `${baseUrl}/user${qstrNikToken}` %>">
+                    <%= goal.name %>
+                </a>
+            </li>
+       <% }) %>
+
+    </ul>
