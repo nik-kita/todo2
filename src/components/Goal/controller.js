@@ -1,5 +1,6 @@
 const queryString = require('querystring');
 const UserService = require('../User/service');
+const TaskModel = require('../Task/model');
 
 function createGoalView(req, res) {
     const qstrNikToken = `?${queryString.stringify(req.query)}`;
@@ -15,11 +16,23 @@ async function createGoal(req, res) {
 async function editGoalView(req, res) {
     const qstrNikToken = `?${queryString.stringify(req.query)}`;
     const goal = await UserService.getGoal(req.params.goalId);
-    res.render('editGoal', { qstrNikToken, goal });
+    const tasks = [];
+    for (t of goal.tasks) {
+        tasks.push(await TaskModel.findById(t).exec())
+    };
+    console.log(tasks);
+    res.render('editGoal', { qstrNikToken, goal, tasks });
+}
+
+function addTask(req, res) {
+    const qstrNikToken = `?${queryString.stringify(req.query)}`;
+    UserService.addTask(req.params.goalId, req.body);
+    res.redirect(`/todo/goal/${req.params.goalId}${qstrNikToken}`);
 }
 
 module.exports = {
     createGoal,
     createGoalView,
     editGoalView,
+    addTask,
 };

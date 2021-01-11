@@ -1,4 +1,5 @@
 const UserModel = require('./model');
+const TaskService = require('../Task/service');
 
 function findByNik(nik) {
     return UserModel.findOne({ nik }).exec();
@@ -23,9 +24,20 @@ async function getGoal(goalId) {
     return goal;
 }
 
+async function addTask(goalId, taskData) {
+    console.log('hello');
+    const user = await UserModel.findOne({ goals: { $elemMatch: { _id: goalId } } });
+    taskData.owner = user._id;
+    const task = await TaskService.create(taskData);
+    const goal = user.goals.find((g) => g._id.toString() === goalId);
+    goal.tasks.push(task._id);
+    user.save();
+}
+
 module.exports = {
     getGoal,
     findByNik,
     create,
     createGoalAndReturnId,
+    addTask,
 };

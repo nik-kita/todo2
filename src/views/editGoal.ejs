@@ -1,2 +1,22 @@
 <%- contentFor('content') %> 
-<h1><%= goal.name %></h1>
+<h1>
+    <a href="<%= `${baseUrl}/goal/${goal._id}${qstrNikToken}` %>">
+        <%= goal.name %>
+    </a>
+</h1>
+<hr>
+<ol>
+    <% tasks.forEach(t => { %>
+        <li>
+            <a href="#">
+                <%= t.name %>
+            </a>
+        </li>
+    <% }) %>
+    <li>
+        <form method="POST" action="<%= `${baseUrl}/goal/${goal._id}${qstrNikToken}` %>">
+            <input name="name" type="text">
+            <input type="submit" value="Add task">
+        </form>
+    </li>
+</ol>
