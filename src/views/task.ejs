@@ -1,0 +1,14 @@
+<%- contentFor('content') %>
+
+    <a href="<%= `${baseUrl}/goal/${goal._id}${qstrNikToken}` %>">
+        <%= goal.name %>
+    </a>
+    <% parents.forEach((p) => { %>
+        <a href="<%= `${baseUrl}/goal/${goal._id}/task/${p._id}${qstrNikToken}` %>">
+            <%= p.name %>
+        </a>
+    <% }) %>
+    <hr>
+    <h1>
+        <%= task.name %>
+    </h1>
