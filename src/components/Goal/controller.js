@@ -15,12 +15,11 @@ async function createGoal(req, res) {
 
 async function editGoalView(req, res) {
     const qstrNikToken = `?${queryString.stringify(req.query)}`;
-    const goal = await UserService.getGoal(req.params.goalId);
+    const goal = await UserService.getGoal(req.query.nik, req.params.goalId);
     const tasks = [];
     for (t of goal.tasks) {
         tasks.push(await TaskModel.findById(t).exec())
     };
-    console.log(tasks);
     res.render('editGoal', { qstrNikToken, goal, tasks });
 }
 

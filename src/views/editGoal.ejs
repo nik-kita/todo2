@@ -8,7 +8,7 @@
 <ol>
     <% tasks.forEach(t => { %>
         <li>
-            <a href="<%= `${baseUrl}/goal/${goal._id}/task/${t._id}${qstrNikToken}` %>">
+            <a href="<%= `${baseUrl}/task/${t._id}${qstrNikToken}&goalId=${goal._id}` %>">
                 <%= t.name %>
             </a>
         </li>

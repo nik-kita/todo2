@@ -2,7 +2,6 @@ const TaskModel = require('./model');
 
 async function checkOwner(req, res, next) {
     const owner = await TaskModel.findById(req.params.taskId).populate('owner').exec();
-    console.log(owner);
     if (owner.nik === req.query.nik) {
         next();
     } else {

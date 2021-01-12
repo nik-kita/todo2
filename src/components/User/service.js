@@ -17,15 +17,14 @@ async function createGoalAndReturnId(nik, goal) {
     return goalId;
 }
 
-async function getGoal(goalId) {
-    const user = await UserModel.findOne({ goals: { $elemMatch: { _id: goalId } } });
+async function getGoal(nik, goalId) {
+    const user = await UserModel.findOne({ nik }).exec();
     // eslint-disable-next-line no-underscore-dangle
     const goal = user.goals.find((g) => g._id.toString() === goalId);
     return goal;
 }
 
 async function addTask(goalId, taskData) {
-    console.log('hello');
     const user = await UserModel.findOne({ goals: { $elemMatch: { _id: goalId } } });
     taskData.owner = user._id;
     const task = await TaskService.create(taskData);
