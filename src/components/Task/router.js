@@ -6,5 +6,6 @@ const router = Router();
 
 router.use('/:taskId', TaskMiddleware.checkOwner);
 router.get('/:taskId', TaskController.editTaskView);
+router.post('/:taskId', TaskController.addSubtask);
 
 module.exports = router;

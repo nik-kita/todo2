@@ -4,6 +4,7 @@
         <%= goal.name %>
     </a>
     <% parents.forEach((p) => { %>
+        <span> &#x2192; </span>
         <a href="<%= `${baseUrl}/task/${p._id}${qstrNikTokenGoalId}` %>">
             <%= p.name %>
         </a>
@@ -12,3 +13,19 @@
     <h1>
         <%= task.name %>
     </h1>
+
+    <ol>
+        <% subtasks.forEach(s => { %>
+            <li>
+                <a href="<%= `${baseUrl}/task/${s._id}${qstrNikTokenGoalId}&goalId=${goal._id}` %>">
+                    <%= s.name %>
+                </a>
+            </li>
+        <% }) %>
+        <li>
+            <form method="POST" action="<%= `${baseUrl}/goal/${goal._id}${qstrNikToken}` %>">
+                <input name="name" type="text">
+                <input type="submit" value="Add subtask">
+            </form>
+        </li>
+    </ol>

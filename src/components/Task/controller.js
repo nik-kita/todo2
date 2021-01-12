@@ -7,10 +7,13 @@ async function editTaskView(req, res) {
     const goal = await UserService.getGoal(req.query.nik, req.query.goalId);
     const title = `TODO | ${goal.name}`;
     const task = await TaskModel.findOne({ _id: req.params.taskId }).exec();
+    const subtasksPromises = task.subtasks.map((s) => TaskModel.findById(s).exec());
     const parents = await allTaskParents([], task._id);
     delete req.query.goalId;
     const qstrNikToken = `?${queryString.stringify(req.query)}`;
+    const subtasks = await Promise.all(subtasksPromises);
     res.render('task', {
+        subtasks,
         title,
         goal,
         qstrNikTokenGoalId,
@@ -18,6 +21,15 @@ async function editTaskView(req, res) {
         parents,
         task,
     });
+}
+
+async function addSubTasks(req, res) {
+    const qstrNikTokenGoalId = `?${queryString.stringify(req.query)}`;
+    req.body.owner = (await UserService.findByNik(req.query.nik))._id;
+    const newTaskPromise = TaskModel.create(req.body);
+    delete req.query.goalId;
+    const qstrNikToken = `?${queryString.stringify(req.query)}`;
+    TaskService.
 }
 
 async function allTaskParents(arrayForParents, taskId) {
@@ -32,4 +44,5 @@ async function allTaskParents(arrayForParents, taskId) {
 
 module.exports = {
     editTaskView,
+    addSubTasks,
 };
