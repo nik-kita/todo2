@@ -4,7 +4,7 @@ const TaskController = require('./controller');
 
 const router = Router();
 
-//router.use('/', TaskMiddleware.checkOwner);
+router.use('/:taskId', TaskMiddleware.checkOwner);
 router.get('/:taskId', TaskController.editTaskView);
 
 module.exports = router;

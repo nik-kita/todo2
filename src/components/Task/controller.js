@@ -1,30 +1,22 @@
 const queryString = require('querystring');
-const UserService = require('../User/service');
 const TaskModel = require('./model');
+const UserService = require('../User/service');
 
 async function editTaskView(req, res) {
     const qstrNikTokenGoalId = `?${queryString.stringify(req.query)}`;
-    console.log(req.params);
     const goal = await UserService.getGoal(req.query.nik, req.query.goalId);
-    console.log('----');
-    console.log('----');
-    console.log('----');
-    console.log('----');
-    console.log(req.query.nik);
-    console.log(req.query.goalId);
-    console.log(req.params.taskId);
-    console.log(goal);
     const title = `TODO | ${goal.name}`;
-    const parentsPromises = [];
-    const cursorTask = await TaskModel.findOne({ _id: req.params.taskId }).exec();
-    console.log(cursorTask);
-    const parents = await allTaskParents([], cursorTask._id);
-    console.log(parents);
+    const task = await TaskModel.findOne({ _id: req.params.taskId }).exec();
+    const parents = await allTaskParents([], task._id);
+    delete req.query.goalId;
+    const qstrNikToken = `?${queryString.stringify(req.query)}`;
     res.render('task', {
         title,
         goal,
         qstrNikTokenGoalId,
+        qstrNikToken,
         parents,
+        task,
     });
 }
 
