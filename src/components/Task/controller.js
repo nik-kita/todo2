@@ -23,13 +23,16 @@ async function editTaskView(req, res) {
     });
 }
 
-async function addSubTasks(req, res) {
+async function addSubTask(req, res) {
     const qstrNikTokenGoalId = `?${queryString.stringify(req.query)}`;
     req.body.owner = (await UserService.findByNik(req.query.nik))._id;
     const newTaskPromise = TaskModel.create(req.body);
     delete req.query.goalId;
     const qstrNikToken = `?${queryString.stringify(req.query)}`;
-    TaskService.
+    TaskModel.findByIdAndUpdate(req.params.taskId, {
+        $push: { subtasks: await newTaskPromise },
+    });
+    res.redirect(`/todo/task/${req.params.taskId}${qstrNikTokenGoalId}`);
 }
 
 async function allTaskParents(arrayForParents, taskId) {
@@ -44,5 +47,5 @@ async function allTaskParents(arrayForParents, taskId) {
 
 module.exports = {
     editTaskView,
-    addSubTasks,
+    addSubTask,
 };

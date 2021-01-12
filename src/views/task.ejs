@@ -17,7 +17,7 @@
     <ol>
         <% subtasks.forEach(s => { %>
             <li>
-                <a href="<%= `${baseUrl}/task/${s._id}${qstrNikTokenGoalId}&goalId=${goal._id}` %>">
+                <a href="<%= `${baseUrl}/task/${s._id}${qstrNikTokenGoalId}` %>">
                     <%= s.name %>
                 </a>
             </li>
