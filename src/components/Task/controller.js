@@ -27,11 +27,9 @@ async function addSubTask(req, res) {
     const qstrNikTokenGoalId = `?${queryString.stringify(req.query)}`;
     req.body.owner = (await UserService.findByNik(req.query.nik))._id;
     const newTaskPromise = TaskModel.create(req.body);
-    delete req.query.goalId;
-    const qstrNikToken = `?${queryString.stringify(req.query)}`;
     TaskModel.findByIdAndUpdate(req.params.taskId, {
         $push: { subtasks: await newTaskPromise },
-    });
+    }).exec();
     res.redirect(`/todo/task/${req.params.taskId}${qstrNikTokenGoalId}`);
 }
 

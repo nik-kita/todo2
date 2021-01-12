@@ -23,7 +23,7 @@
             </li>
         <% }) %>
         <li>
-            <form method="POST" action="<%= `${baseUrl}/goal/${goal._id}${qstrNikToken}` %>">
+            <form method="POST" action="<%= `${baseUrl}/task/${task._id}${qstrNikTokenGoalId}` %>">
                 <input name="name" type="text">
                 <input type="submit" value="Add subtask">
             </form>
