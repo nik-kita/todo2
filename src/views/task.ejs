@@ -3,12 +3,7 @@
     <a href="<%= `${baseUrl}/goal/${goal._id}${qstrNikToken}` %>">
         <%= goal.name %>
     </a>
-    <% parents.forEach((p) => { %>
-        <span> &#x2192; </span>
-        <a href="<%= `${baseUrl}/task/${p._id}${qstrNikTokenGoalId}` %>">
-            <%= p.name %>
-        </a>
-    <% }) %>
+    <%- include('./partials/taskParents', { parents }) %>
     <hr>
     <h1>
         <%= task.name %>

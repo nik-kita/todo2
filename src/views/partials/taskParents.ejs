@@ -1,0 +1,6 @@
+<% parents.forEach((p) => { %>
+    <span> &#x2192; </span>
+    <a href="<%= `${baseUrl}/task/${p._id}${qstrNikTokenGoalId}` %>">
+        <%= p.name %>
+    </a>
+<% }) %>

@@ -1,9 +1,9 @@
 <%- contentFor('content') %> 
-<h1>
+
     <a href="<%= `${baseUrl}/goal/${goal._id}${qstrNikToken}` %>">
         <%= goal.name %>
     </a>
-</h1>
+
 <hr>
 <ol>
     <% tasks.forEach(t => { %>
