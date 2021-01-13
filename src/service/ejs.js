@@ -10,5 +10,7 @@ module.exports = function render(fileName, data = {}, callback) {
     defaultOr(data, 'title', `TODO | ${data.title || ''}`);
     defaultOr(data, 'baseUrl', 'http://localhost:3000');
     defaultOr(data, 'accountSettingsView', false);
+    defaultOr(data, 'isAdmin', false);
+    defaultOr(data, 'goalsView', false);
     ejs.renderFile(fileName, data, callback);
 };

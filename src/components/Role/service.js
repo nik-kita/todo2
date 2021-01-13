@@ -2,11 +2,12 @@ const RoleModel = require('./model');
 const UserService = require('../User/service');
 
 async function isAdmin(nik) {
-    if (await RoleModel.exists({ role: 'admin' }).exec()) {
+    const isAdminCreated = await RoleModel.exists({ role: 'admin' });
+    if (isAdminCreated) {
         const adminRolePromise = RoleModel.findOne({ role: 'admin' }).exec();
         const userPromise = UserService.findByNik(nik);
-        const [adminRole, user] = Promise.all(adminRolePromise, userPromise);
-        return adminRole.users.some((id) => id === user._id);
+        const [adminRole, user] = await Promise.all([adminRolePromise, userPromise]);
+        return adminRole.users.some((id) => id.toString() === user._id.toString());
     }
     return false;
 }
@@ -25,7 +26,8 @@ async function makeAdmin(nik, password) {
         ).exec();
         return;
     }
-    if (await isAdmin(nik)) {
+    const admin = await isAdmin(nik);
+    if (!admin) {
         RoleModel.findOneAndUpdate(
             { role: 'admin' },
             { $push: { users: userId } },

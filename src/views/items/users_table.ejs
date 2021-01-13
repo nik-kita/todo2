@@ -1,0 +1,34 @@
+<table id="all-users">
+    <tr>
+        <th>#</th>
+        <th>Nik</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Goals</th>
+    </tr>
+    <% 
+    let counter = 0;
+    users.forEach(u=> { %>
+    <tr>
+        <td><%= ++counter %></td>
+        <td>
+                <%= u.nik %>
+        </td>
+        <td>
+                <%= u.email %>
+        </td>
+        <td>
+                <%= u.password %>
+        </td>
+        <td style="overflow-x:auto; text-align: left;">
+                <ul>
+                    <% u.goals.forEach(g=> { %>
+                        <li>
+                            <%= g.name %>
+                        </li>
+                        <% }) %>
+                </ul>
+        </td>
+    </tr>
+    <% }) %>
+</table>

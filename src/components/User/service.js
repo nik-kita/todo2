@@ -37,6 +37,12 @@ function logout(nik) {
     return UserModel.findOneAndUpdate({ nik }, { token: null }).exec();
 }
 
+async function getAll() {
+    const all = await UserModel.find({}).exec();
+    console.log(all);
+    return all;
+}
+
 module.exports = {
     getGoal,
     findByNik,
@@ -44,4 +50,5 @@ module.exports = {
     createGoalAndReturnId,
     addTask,
     logout,
+    getAll,
 };
