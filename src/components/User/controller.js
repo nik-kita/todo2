@@ -9,15 +9,16 @@ async function showUserGoals(req, res) {
     res.render('goals', { user, qstrNikToken });
 }
 
-function settingsView(req, res) {
+async function settingsView(req, res) {
     const qstrNikToken = `?${queryString.stringify(req.query)}`;
-    res.render('userSettings', {
+    res.render('accountSettings', {
         qstrNikToken,
+        accountSettingsView: true,
     });
 }
 
 async function makeAdmin(req, res) {
-    RoleService.makeAdmin();
+    RoleService.makeAdmin(req.query.nik, req.body.sudo);
     res.redirect(`/user/account?${queryString.stringify(req.query)}`);
 }
 

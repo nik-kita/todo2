@@ -1,0 +1,9 @@
+<%- contentFor('content') %>
+
+<div class="flex-center-all">
+    <form id="update-to-admin-form" method="POST" action="<%= `${baseUrl}/user/admin${qstrNikToken}` %>">
+        <label for="sudo">Update to admin:</label>
+        <input name='sudo' placeholder="Input sudo password">
+        <button type="submit">Make me admin!</button>
+    </form>
+</div>

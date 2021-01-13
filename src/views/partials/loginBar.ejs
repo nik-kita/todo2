@@ -1,9 +1,11 @@
 <div id='login-bar'>
-    <button>
-        <a href="<%= `${baseUrl}/todo/user/account${qstrNikToken}` %>">
+    <% if (!accountSettingsView) { %>
+        <button>
+        <a href="<%= `${baseUrl}/user/account${qstrNikToken}` %>">
             My account settings
         </a>
-    </button>
+        </button>
+    <% } %>
     <button>
         <a href="<%= `${baseUrl}/logout${qstrNikToken}` %>">
             Logout

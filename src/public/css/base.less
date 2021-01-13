@@ -19,6 +19,24 @@ body {
     padding-left: 6%;
     color: @yellow;
 }
+form * {
+  margin-left: 16px;
+  display: block;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+
+.flex-center-all {
+  margin: auto;
+  padding: 100px;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: @bg;
+}
 
 button {
     padding: 8px 16px;
@@ -26,7 +44,6 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
     transition-duration: 0.5s;
     cursor:pointer;
     background-color: @green; 
@@ -70,6 +87,9 @@ a {
   flex-flow: row wrap;
   justify-content: flex-end;
   align-items: baseline;
+}
+#login-bar * {
+  margin: 2px 4px;
 }
 
 hr {

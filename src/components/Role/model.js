@@ -7,9 +7,7 @@ const RoleSchema = new Schema(
             type: String,
         },
         users: {
-            type: {
-                type: [{ type: Schema.Types.ObjectId, ref: 'users' }],
-            },
+            type: [{ type: Schema.Types.ObjectId, ref: 'users' }],
             default: [],
         },
     },
