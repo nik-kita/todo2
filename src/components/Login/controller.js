@@ -2,11 +2,11 @@ const queryString = require('querystring');
 const UserService = require('../User/service');
 
 function loginView(req, res) {
-    res.render('login');
+    res.render('login', { layout: './layouts/loginLayout' });
 }
 
 function registerView(req, res) {
-    res.render('register');
+    res.render('register', { layout: './layouts/loginLayout' });
 }
 
 async function login(req, res) {
@@ -27,9 +27,15 @@ function register(req, res) {
     res.redirect('/todo/login');
 }
 
+function logout(req, res) {
+    res.redirect('/todo/login');
+    UserService.logout(req.query.nik);
+}
+
 module.exports = {
     loginView,
     login,
     registerView,
     register,
+    logout,
 };

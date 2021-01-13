@@ -33,10 +33,15 @@ async function addTask(goalId, taskData) {
     user.save();
 }
 
+function logout(nik) {
+    return UserModel.findOneAndUpdate({ nik }, { token: null }).exec();
+}
+
 module.exports = {
     getGoal,
     findByNik,
     create,
     createGoalAndReturnId,
     addTask,
+    logout,
 };

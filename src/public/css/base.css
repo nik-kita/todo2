@@ -1,0 +1,63 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  background-color: #282828;
+  padding-right: 6%;
+  padding-left: 6%;
+  color: #fabd2f;
+}
+button {
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.5s;
+  cursor: pointer;
+  background-color: #b8bb26;
+  color: black;
+  border: 2px solid #98971a;
+}
+button:hover {
+  background-color: #98971a;
+  color: white;
+}
+a:link {
+  text-decoration: underline;
+}
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+button a {
+  color: inherit;
+  display: block;
+  text-decoration: none;
+}
+button a:link {
+  color: inherit;
+  display: block;
+  text-decoration: none;
+}
+a {
+  display: block;
+  font-size: 16px;
+  color: white;
+}
+#login-bar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+hr {
+  height: 8px;
+  background-color: #83a598;
+}

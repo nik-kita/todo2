@@ -1,0 +1,19 @@
+.flex-center-all {
+  margin: auto;
+  padding: 100px;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #282828;
+}
+form * {
+  margin: auto;
+  display: block;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+#login-form {
+  margin-top: 12%;
+}

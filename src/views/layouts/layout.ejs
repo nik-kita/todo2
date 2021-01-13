@@ -1,8 +1,17 @@
 <html>
-    <head>
-        <title><%= title %></title>
-    </head>
-    <body>
+
+<head>
+    <link href="/public/css/base.css" rel="stylesheet">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+
+    <%- include('../partials/loginBar') %>
+
         <%- content %>
-    </body>
+</body>
+
 </html>
