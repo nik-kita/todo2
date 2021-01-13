@@ -6,9 +6,7 @@
 
        <% user.goals.forEach(goal => { %>
             <li>
-                <a href="<%= `${baseUrl}/goal/${goal._id}${qstrNikToken}` %>">
-                    <%= goal.name %>
-                </a>
+                <%- include('./items/goal_li', { goal }) %>
             </li>
        <% }) %>
 
