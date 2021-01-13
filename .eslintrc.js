@@ -12,5 +12,6 @@ module.exports = {
     },
     rules: {
         indent: ['error', 4],
+        'no-underscore-dangle': ['error', { allow: ['_id'] }],
     },
 };

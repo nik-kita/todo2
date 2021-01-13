@@ -1,0 +1,5 @@
+<%- contentFor('content') %>
+<form method="POST" action="<%= `${baseUrl}/user/admin${qstrNikToken}` %>">
+    <input name='sudo' placeholder="Input sudo password to became admin">
+    <button type="submit">Update to admin</button>
+</form>
