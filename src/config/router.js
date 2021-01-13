@@ -6,11 +6,19 @@ const GoalRouter = require('../components/Goal/router');
 
 module.exports = {
     init(app) {
-        app.use('/todo', LoginRouter);
-        app.use('/todo', UserMiddleware.checkToken);
-        app.use('/todo/user', UserRouter);
-        app.use('/todo/goal', GoalRouter);
-        app.use('/todo/task', TaskRouter);
-        app.use('/', (req, res) => res.status(200).json({ sms: 'Make something aweosome!' }));
+        app.use('/', LoginRouter);
+        app.use('/', UserMiddleware.checkToken);
+        app.use('/user', UserRouter);
+        app.use('/goal', GoalRouter);
+        app.use('/task', TaskRouter);
+        /**
+         * @description No results returned mean the object is not found
+         * @function
+         * @inner
+         * @param {callback} middleware - Express middleware.
+         */
+        app.use((req, res) => {
+            res.json({ sms: 'error' });
+        });
     },
 };

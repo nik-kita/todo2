@@ -35,7 +35,7 @@ async function addSubTask(req, res) {
     TaskModel.findByIdAndUpdate(req.params.taskId, {
         $push: { subtasks: await newTaskPromise },
     }).exec();
-    res.redirect(`/todo/task/${req.params.taskId}${qstrNikTokenGoalId}`);
+    res.redirect(`/task/${req.params.taskId}${qstrNikTokenGoalId}`);
 }
 
 async function allTaskParents(arrayForParents, taskId) {

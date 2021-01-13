@@ -16,7 +16,7 @@ async function login(req, res) {
         user.token = token;
         user.save();
         const qstrNikToken = `?${queryString.stringify({ nik: user.nik, token })}`;
-        res.redirect(`/todo/user${qstrNikToken}`);
+        res.redirect(`/user${qstrNikToken}`);
     } else {
         res.status(404).json({ sms: 'Please check your nik or password and try again!' });
     }
@@ -24,11 +24,11 @@ async function login(req, res) {
 
 function register(req, res) {
     UserService.create(req.body);
-    res.redirect('/todo/login');
+    res.redirect('/login');
 }
 
 function logout(req, res) {
-    res.redirect('/todo/login');
+    res.redirect('/login');
     UserService.logout(req.query.nik);
 }
 
