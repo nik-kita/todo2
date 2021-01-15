@@ -1,0 +1,28 @@
+body {
+  background-color: #282828;
+  color: #fabd2f;
+}
+hr {
+  height: 8px;
+  background-color: #83a598;
+}
+table,
+th,
+td {
+  border: 8px solid #a89984;
+  background-color: #fbf1c7;
+  color: black;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+th {
+  height: 55px;
+  background-color: #a89984;
+  color: white;
+}
+td {
+  height: 45px;
+}

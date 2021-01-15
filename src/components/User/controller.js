@@ -28,7 +28,7 @@ async function makeAdmin(req, res) {
 async function showUsers(req, res) {
     const users = await UserService.getAll();
     const qstrNikToken = `?${queryString.stringify(req.query)}`;
-    res.render('showUsers', { users, qstrNikToken });
+    res.render('showUsers', { users, qstrNikToken, layout: './layouts/emptyLayout' });
 }
 
 module.exports = {
